@@ -1,11 +1,10 @@
 package com.example.meuprimeiroprojeto
 
-import android.content.Intent
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import com.google.android.material.textfield.TextInputEditText
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,30 +12,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val btnCalcular: Button = findViewById(R.id.btnCalcular)
-        val edtPeso: EditText = findViewById(R.id.edttext_peso)
-        val edtAltura: EditText = findViewById(R.id.edttext_altura)
+        val edtPeso = findViewById<TextInputEditText>(R.id.edt_peso)
+        val edtAltura = findViewById<TextInputEditText>(R.id.edt_altura)
+        val btnCalcular= findViewById<Button>(R.id.btn_calcular)
 
-        btnCalcular.setOnClickListener {
-
-            val alturaStr = edtAltura.text.toString()
-            val pesoStr = edtPeso.text.toString()
-
-           if (alturaStr.isNotEmpty() && pesoStr.isNotEmpty()) {
-            val altura: Float = alturaStr.toFloat()
-            val peso: Float = pesoStr.toFloat()
-
-            val alturaFinal: Float = altura * altura
-            val result: Float = peso / alturaFinal
-
-            val intent = Intent(this, ResultActivity::class.java)
-                .apply {
-                    putExtra("EXTRA_RESULT", result)
-                }
-                    startActivity(intent)
-           } else {
-               Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_LONG).show()
-           }
+        btnCalcular.setOnClickListener{
+            val peso =  edtPeso.text
+            val altura= edtAltura.text
+            println("IMC do Gabriel" + peso)
         }
     }
 }
