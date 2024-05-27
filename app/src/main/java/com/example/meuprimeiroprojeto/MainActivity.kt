@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         val edtAltura = findViewById<TextInputEditText>(R.id.edt_altura)
         val btnCalcular = findViewById<Button>(R.id.btn_calcular)
 
-        //Toda ação do botão
+
         btnCalcular.setOnClickListener {
             val pesoStr: String = edtPeso.text.toString()
             val alturaStr: String = edtAltura.text.toString()
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
                 val alturaQ2 = altura * altura
                 val resultado = peso / alturaQ2
 
-                //navegando para a próxima tela ao clicar no botão
+
 
                 val intent = Intent(this, ResultActivity::class.java)
                 intent.apply {
