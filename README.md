@@ -37,7 +37,7 @@ Gabriel Vieira Santos (follow me on [Linkedin](https://www.linkedin.com/in/gabri
 ## License
 ```
 The MIT License (MIT)
-Copyright (c) 2023 Gabriel Vieira Santos
+Copyright (c) 2024 Gabriel Vieira Santos
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
