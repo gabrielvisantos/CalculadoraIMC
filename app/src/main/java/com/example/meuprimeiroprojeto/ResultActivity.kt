@@ -1,43 +1,58 @@
 package com.example.meuprimeiroprojeto
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Button
 import android.widget.TextView
+import com.google.android.material.textfield.TextInputEditText
+
+const val KEY_RESULT_IMC = "ResultActivity.KEY_IMC"
 
 class ResultActivity : AppCompatActivity() {
+    @SuppressLint("SetTextI18n", "MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
 
-        supportActionBar?.setHomeButtonEnabled(true)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        val result = intent.getFloatExtra(KEY_RESULT_IMC, 0f)
+        val peso: String = intent.getFloatExtra("resumoPeso", 0.0f).toString()
+        val altura: String = intent.getFloatExtra("resumoAltura", 0.0f).toString()
+        val tvPeso = findViewById<TextView>(R.id.tv_peso)
+        val tvAltura = findViewById<TextView>(R.id.tv_altura)
+        val tvResult = findViewById<TextView>(R.id.tv_result)
+        val tvClassicicacao = findViewById<TextView>(R.id.tv_classificacao)
 
-        val tvResult = findViewById<TextView>(R.id.textview_result)
-        val tvClassificacao = findViewById<TextView>(R.id.textview_classificacao)
 
-        val result = intent.getFloatExtra("EXTRA_RESULT", 0.1f)
+        tvResult.text = result.toString()
 
-            tvResult.text = result.toString()
 
-        val classificacao = if (result <18.5f){
-            "Abaixo do peso"
-        } else if (result in 18.5f .. 24.9f){
-            "Normal"
-        } else if (result in 25f .. 29.9f){
-            "Obesidade I"
-        } else if (result in 30f .. 39.9f){
-            "Obesidade II"
+        val classificacao: String = if (result <= 18.5f) {
+            "MAGREZA"
+        } else if (result > 18.5f && result <= 24.9f) {
+            "NORMAL"
+        } else if (result > 25f && result <= 29.29f) {
+            "SOBREPESO"
+        } else if (result > 30f && result <= 39.9f) {
+            "OBESIDADE"
         } else {
-            "Obesidade Grave III"
+            "OBESIDADE GRAVE"
         }
 
-        tvClassificacao.text = getString(R.string.message_classificacao, classificacao)
+        tvClassicicacao.text = classificacao
+        tvPeso.text = peso + " Kg"
+        tvAltura.text = altura + " cm"
+
+        val btnNovoCalculo = findViewById<Button>(R.id.btn_novo_calculo)
+
+        btnNovoCalculo.setOnClickListener {
+            finish()
+        }
+
+
+
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        finish()
-        return super.onOptionsItemSelected(item)
-    }
+
 }
-

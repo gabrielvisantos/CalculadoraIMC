@@ -4,83 +4,142 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context=".ResultActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradiente_bg"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/ic_weight"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="Calculadora IMC"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:text="Confira abaixo o resultado do IMC e a classificação"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:maxLength="5"
+            android:textColor="@color/white"
+            android:textSize="70sp"
+            tools:text="23.66" />
+
+
+    </LinearLayout>
+
+
     <TextView
-        android:textColor="@color/purple_700"
-        android:layout_marginTop="16dp"
-        android:text="Seu IMC é:"
+        android:id="@+id/tv_classificacao_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="A classificação do seu IMC é:" />
+
+
+    <TextView
+        android:id="@+id/tv_classificacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_marginTop="32dp"
         android:textStyle="bold"
-        android:textAlignment="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        tools:text="NORMAL" />
 
-    <TextView
-        android:id="@+id/textview_result"
-        android:textAlignment="center"
-        android:padding="16dp"
-        android:textSize="38sp"
-        tools:text="27.104"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="1dp"
+        android:background="@color/black"
+        android:layout_marginTop="16dp"/>
 
-    <TextView
-        android:id="@+id/textview_classificacao"
-        android:layout_margin="8dp"
-        android:textSize="18sp"
-        android:textAlignment="center"
-        tools:text="Classificação: Normal"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:textAlignment="center"
-        android:textSize="17sp"
-        android:text="Veja a tabela a baixo:"
-        android:textStyle="bold"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_resumo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:text="Resumo"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:textAlignment="center"
-        android:textSize="15sp"
-        android:text="Menor que 18,5: Abaixo do peso"
-        android:textColor="@color/color_abaixodopeso"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_resumo_peso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Peso:"
+            app:layout_constraintStart_toStartOf="@+id/tv_resumo"
+            app:layout_constraintTop_toBottomOf="@+id/tv_resumo" />
 
-    <TextView
-        android:textAlignment="center"
-        android:textSize="15sp"
-        android:text="Entre 18,5 e 24,9: Normal"
-        android:textColor="@color/color_normal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_peso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_resumo_peso"
+            tools:text="00.00" />
 
-    <TextView
-        android:textAlignment="center"
-        android:textSize="15sp"
-        android:text="Entre 25 e 29,9: Acima do peso"
-        android:textColor="@color/color_obesidadeI"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_resumo_altura"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Altura:"
+            app:layout_constraintStart_toStartOf="@+id/tv_resumo_peso"
+            app:layout_constraintTop_toBottomOf="@+id/tv_resumo_peso" />
 
-    <TextView
-        android:textAlignment="center"
-        android:textSize="15sp"
-        android:text="Entre 30 e 39.9: Obesidade"
-        android:textColor="@color/color_obesidadeII"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_altura"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_resumo_altura"
+            tools:text="00.00" />
 
-    <TextView
-        android:textAlignment="center"
-        android:textSize="15sp"
-        android:text="Acima de 40: Obesidade Grave"
-        android:textColor="@color/color_obesidadeIII"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btn_novo_calculo"
+            android:layout_margin="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_btn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="Novo Cálculo"/>
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>
