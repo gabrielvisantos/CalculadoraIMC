@@ -16,6 +16,7 @@ Calculadora de Índice de Massa Corporal (IMC) foi meu primeiro projeto de desen
 * ViewGroup
     * RelativeLayout
     * LinearLayout
+    * ConstraintLayout
 - Components de UI
     - TextView
     - LinearLayout
